@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ayo Mengenal Pianika - Media Pembelajaran SLB Fase B</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f0fdf4;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        .btn-bounce:active {
+            transform: scale(0.95);
+        }
+
+        .hotspot-pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .part-highlight {
+            filter: drop-shadow(0px 0px 8px #f59e0b);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden">
+
+    <header class="bg-teal-600 text-white p-3 md:p-4 shadow-lg sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="goToPage(1)">
+                <div class="bg-white text-teal-600 w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center text-2xl md:text-3xl font-bold shadow">
+                    🎹
+                </div>
+                <div>
+                    <h1 class="font-heading text-lg md:text-2xl font-bold leading-tight tracking-wide">AYO MENGENAL PIANIKA</h1>
+                    <p class="text-xs md:text-sm text-teal-100 font-medium">Media Pembelajaran Interaktif SLB Fase B</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleTeacherModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3 py-2 rounded-2xl text-xs md:text-sm shadow flex items-center gap-2 btn-bounce">
+                    <i class="fa-solid fa-user-gear text-base"></i>
+                    <span class="hidden sm:inline">MATERI GURU</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-3 md:p-6">
+        <div class="w-full max-w-3xl bg-white rounded-3xl p-4 md:p-8 card-shadow border-4 border-teal-100 min-h-[520px] flex flex-col justify-between">
+
+            <!-- HALAMAN 1: BERANDA -->
+            <section id="page-1" class="page-section flex flex-col items-center text-center my-auto py-2">
+                <div class="bg-amber-100 text-amber-800 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full mb-3 inline-flex items-center gap-2">
+                    <span>✨ Belajar Musik Lebih Mudah & Menyenangkan</span>
+                </div>
+                
+                <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-teal-700 mb-2 leading-tight">
+                    🎹 AYO MENGENAL PIANIKA
+                </h2>
+                <p class="text-slate-600 text-sm md:text-lg mb-4 max-w-md font-medium">
+                    Media Pembelajaran Interaktif Khusus Peserta Didik SLB Fase B
+                </p>
+
+                <!-- Mascot SVG Illustration -->
+                <div class="w-44 h-44 md:w-56 md:h-56 my-2 animate-bounce flex items-center justify-center bg-teal-50 rounded-full p-4 border-4 border-dashed border-teal-300">
+                    <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
+                        <rect x="20" y="70" width="160" height="60" rx="15" fill="#ef4444" stroke="#b91c1c" stroke-width="4"/>
+                        <rect x="40" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="54" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="68" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="82" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="96" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="110" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="124" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="138" y="80" width="12" height="40" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="2"/>
+                        <rect x="49" y="80" width="7" height="24" fill="#1e293b" rx="1"/>
+                        <rect x="63" y="80" width="7" height="24" fill="#1e293b" rx="1"/>
+                        <rect x="91" y="80" width="7" height="24" fill="#1e293b" rx="1"/>
+                        <rect x="105" y="80" width="7" height="24" fill="#1e293b" rx="1"/>
+                        <rect x="119" y="80" width="7" height="24" fill="#1e293b" rx="1"/>
+                        <path d="M 20 100 Q -10 100 10 150 Q 20 170 50 160" fill="none" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 20 100 Q -10 100 10 150 Q 20 170 50 160" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3,3" stroke-linecap="round"/>
+                        <rect x="48" y="152" width="16" height="16" rx="4" fill="#0f172a"/>
+                        <circle cx="170" cy="100" r="6" fill="#f87171" stroke="#b91c1c" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <!-- Input Nama Peserta Didik -->
+                <div class="w-full max-w-xs mb-4 mt-2">
+                    <label class="block text-left text-xs font-bold text-slate-600 uppercase mb-1">Nama Peserta Didik:</label>
+                    <input type="text" id="studentNameInput" placeholder="Tulis namamu di sini..." 
+                        class="w-full text-center px-4 py-3 rounded-2xl border-2 border-teal-300 focus:border-teal-500 focus:outline-none text-base md:text-lg font-bold text-teal-800 bg-teal-50/50">
+                </div>
+
+                <div class="flex flex-col gap-2.5 w-full max-w-xs">
+                    <button onclick="startApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg md:text-xl py-3.5 px-6 rounded-2xl shadow-lg border-b-4 border-emerald-700 btn-bounce flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> MULAI BELAJAR
+                    </button>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="goToPage(2)" class="bg-sky-500 hover:bg-sky-600 text-white font-bold text-sm py-2.5 px-3 rounded-2xl shadow border-b-4 border-sky-700 btn-bounce flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> PETUNJUK
+                        </button>
+                        <button onclick="toggleTeacherModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-sm py-2.5 px-3 rounded-2xl shadow border-b-4 border-amber-600 btn-bounce flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-chalkboard-user"></i> MATERI GURU
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 2: PETUNJUK -->
+            <section id="page-2" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="font-heading text-2xl md:text-3xl font-bold text-teal-700">PETUNJUK BELAJAR</h2>
+                        <button onclick="speakText('1. Klik tombol. 2. Dengarkan penjelasan. 3. Klik gambar pianika. 4. Jawab pertanyaan. 5. Kumpulkan nilai.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3 py-2 rounded-xl text-xs md:text-sm flex items-center gap-2 btn-bounce shadow">
+                            🔊 Dengarkan
+                        </button>
+                    </div>
+
+                    <div class="space-y-3 my-4">
+                        <div class="flex items-center gap-3 bg-sky-50 p-3.5 rounded-2xl border-2 border-sky-200">
+                            <div class="w-10 h-10 bg-sky-500 text-white rounded-xl flex items-center justify-center text-lg shrink-0 font-bold">1</div>
+                            <p class="text-sm md:text-base font-semibold text-slate-700">Klik tombol untuk navigasi.</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-amber-50 p-3.5 rounded-2xl border-2 border-amber-200">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center text-lg shrink-0 font-bold">2</div>
+                            <p class="text-sm md:text-base font-semibold text-slate-700">Dengarkan penjelasan suara.</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-teal-50 p-3.5 rounded-2xl border-2 border-teal-200">
+                            <div class="w-10 h-10 bg-teal-500 text-white rounded-xl flex items-center justify-center text-lg shrink-0 font-bold">3</div>
+                            <p class="text-sm md:text-base font-semibold text-slate-700">Klik gambar bagian pianika.</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-indigo-50 p-3.5 rounded-2xl border-2 border-indigo-200">
+                            <div class="w-10 h-10 bg-indigo-500 text-white rounded-xl flex items-center justify-center text-lg shrink-0 font-bold">4</div>
+                            <p class="text-sm md:text-base font-semibold text-slate-700">Jawab pertanyaan permainan.</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-emerald-50 p-3.5 rounded-2xl border-2 border-emerald-200">
+                            <div class="w-10 h-10 bg-emerald-500 text-white rounded-xl flex items-center justify-center text-lg shrink-0 font-bold">5</div>
+                            <p class="text-sm md:text-base font-semibold text-slate-700">Kumpulkan nilai terbaikmu!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t flex justify-between gap-3">
+                    <button onclick="goToPage(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-2xl btn-bounce text-sm md:text-base">
+                        ⬅️ KEMBALI
+                    </button>
+                    <button onclick="goToPage(3)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-base md:text-lg">
+                        MULAI BELAJAR ➡️
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 3: MENGENAL PIANIKA -->
+            <section id="page-3" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="font-heading text-2xl md:text-3xl font-bold text-teal-700">APA ITU PIANIKA?</h2>
+                        <button onclick="speakText('Ini adalah pianika. Pianika adalah alat musik yang dimainkan dengan cara ditiup dan menekan tuts.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3.5 py-2 rounded-xl text-xs md:text-sm flex items-center gap-2 btn-bounce shadow">
+                            🔊 DENGARKAN
+                        </button>
+                    </div>
+
+                    <div class="bg-teal-50 border-3 border-teal-200 p-5 rounded-3xl text-center my-3">
+                        <p class="text-xl md:text-2xl font-bold text-teal-900 leading-relaxed">
+                            "Ini adalah pianika."
+                        </p>
+                        <p class="text-lg md:text-xl font-semibold text-teal-800 leading-relaxed mt-2">
+                            Pianika dimainkan dengan cara <span class="bg-amber-200 px-2 py-0.5 rounded-lg text-amber-900">ditiup</span> dan <span class="bg-emerald-200 px-2 py-0.5 rounded-lg text-emerald-900">menekan tuts</span>.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center my-4">
+                        <div class="relative bg-white p-6 rounded-3xl border-4 border-teal-200 shadow-md w-full max-w-sm text-center flex flex-col items-center">
+                            <span class="text-7xl md:text-8xl my-2">🎹</span>
+                            <div class="flex items-center gap-2 mt-2 text-sm font-bold text-slate-600 bg-slate-100 px-4 py-2 rounded-2xl">
+                                <span>💨 Ditiup Udara</span>
+                                <span>+</span>
+                                <span>👉 Ditekan Jari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t flex justify-between gap-3">
+                    <button onclick="goToPage(2)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-5 rounded-2xl btn-bounce text-sm md:text-base">
+                        ⬅️ KEMBALI
+                    </button>
+                    <button onclick="goToPage(4)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-base flex items-center gap-2">
+                        BAGIAN PIANIKA ➡️
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 4: BAGIAN-BAGIAN PIANIKA (HOTSPOT INTERAKTIF) -->
+            <section id="page-4" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <h2 class="font-heading text-xl md:text-2xl font-bold text-teal-700">BAGIAN-BAGIAN PIANIKA</h2>
+                            <p class="text-xs md:text-sm text-slate-500 font-medium">Klik/sentuh angka berkedip pada gambar pianika!</p>
+                        </div>
+                        <button onclick="speakText('Sentuh lingkaran nomor pada pianika untuk mempelajari nama dan kegunaan bagiannya.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3 py-1.5 rounded-xl text-xs md:text-sm flex items-center gap-1 btn-bounce shadow">
+                            🔊 DENGARKAN
+                        </button>
+                    </div>
+
+                    <!-- SVG DIAGRAM WITH HOTSPOTS -->
+                    <div class="relative bg-slate-50 border-2 border-slate-200 rounded-2xl p-2 md:p-3 my-2 flex justify-center items-center min-h-[210px]">
+                        <svg viewBox="0 0 500 280" class="w-full max-w-md h-auto">
+                            <!-- Badan Pianika -->
+                            <rect id="svg-badan" x="120" y="80" width="320" height="120" rx="20" fill="#ef4444" stroke="#b91c1c" stroke-width="4"/>
+                            
+                            <!-- Tuts -->
+                            <g id="svg-tuts">
+                                <rect x="150" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="175" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="200" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="225" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="250" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="275" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="300" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="325" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <rect x="350" y="100" width="22" height="80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="3"/>
+                                <!-- Black Keys -->
+                                <rect x="166" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                                <rect x="191" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                                <rect x="241" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                                <rect x="266" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                                <rect x="291" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                                <rect x="341" y="100" width="12" height="48" fill="#0f172a" rx="2"/>
+                            </g>
+
+                            <!-- Selang Tiup -->
+                            <g id="svg-selang">
+                                <path d="M 120 140 Q 60 140 70 210 Q 80 260 160 240" fill="none" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
+                                <path d="M 120 140 Q 60 140 70 210 Q 80 260 160 240" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4,4" stroke-linecap="round"/>
+                            </g>
+
+                            <!-- Mouthpiece -->
+                            <rect id="svg-mouthpiece" x="155" y="228" width="30" height="24" rx="6" fill="#0f172a"/>
+
+                            <!-- Saluran Udara -->
+                            <g id="svg-udara">
+                                <circle cx="415" cy="140" r="12" fill="#f87171" stroke="#991b1b" stroke-width="3"/>
+                                <circle cx="415" cy="140" r="8" fill="#ef4444"/>
+                            </g>
+
+                            <!-- HOTSPOTS (INTERACTIVE BUTTONS) -->
+                            <!-- Hotspot 1: TUTS -->
+                            <g class="cursor-pointer" onclick="showPartDetail('tuts')">
+                                <circle cx="260" cy="140" r="18" fill="#fbbf24" opacity="0.8" class="hotspot-pulse"/>
+                                <circle cx="260" cy="140" r="12" fill="#f59e0b"/>
+                                <text x="260" y="145" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+                            </g>
+
+                            <!-- Hotspot 2: SELANG TIUP -->
+                            <g class="cursor-pointer" onclick="showPartDetail('selang')">
+                                <circle cx="75" cy="210" r="18" fill="#fbbf24" opacity="0.8" class="hotspot-pulse"/>
+                                <circle cx="75" cy="210" r="12" fill="#f59e0b"/>
+                                <text x="75" y="215" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+                            </g>
+
+                            <!-- Hotspot 3: MOUTHPIECE -->
+                            <g class="cursor-pointer" onclick="showPartDetail('mouthpiece')">
+                                <circle cx="170" cy="240" r="18" fill="#fbbf24" opacity="0.8" class="hotspot-pulse"/>
+                                <circle cx="170" cy="240" r="12" fill="#f59e0b"/>
+                                <text x="170" y="245" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+                            </g>
+
+                            <!-- Hotspot 4: BADAN PIANIKA -->
+                            <g class="cursor-pointer" onclick="showPartDetail('badan')">
+                                <circle cx="390" cy="95" r="18" fill="#fbbf24" opacity="0.8" class="hotspot-pulse"/>
+                                <circle cx="390" cy="95" r="12" fill="#f59e0b"/>
+                                <text x="390" y="100" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+                            </g>
+
+                            <!-- Hotspot 5: SALURAN UDARA -->
+                            <g class="cursor-pointer" onclick="showPartDetail('udara')">
+                                <circle cx="415" cy="140" r="18" fill="#fbbf24" opacity="0.8" class="hotspot-pulse"/>
+                                <circle cx="415" cy="140" r="12" fill="#f59e0b"/>
+                                <text x="415" y="145" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- DETAIL PENJELASAN KARTU -->
+                    <div id="partCard" class="bg-amber-50 border-2 border-amber-300 p-3.5 rounded-2xl text-center min-h-[110px] flex flex-col items-center justify-center transition-all">
+                        <p class="text-slate-600 font-semibold text-sm">💡 Sentuh salah satu angka (1-5) pada gambar pianika di atas.</p>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t flex justify-between gap-3 mt-1">
+                    <button onclick="goToPage(3)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-5 rounded-2xl btn-bounce text-sm md:text-base">
+                        ⬅️ KEMBALI
+                    </button>
+                    <button onclick="goToPage(5)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-sm md:text-base flex items-center gap-1">
+                        GIM 1: AYO TEMUKAN ➡️
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 5: PERMAINAN "AYO TEMUKAN" -->
+            <section id="page-5" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Permainan 1 dari 2</span>
+                            <h2 class="font-heading text-xl md:text-2xl font-bold text-teal-700 mt-0.5">AYO TEMUKAN!</h2>
+                        </div>
+                        <div class="text-right bg-amber-50 px-3 py-1 rounded-xl border border-amber-200">
+                            <span class="text-[10px] uppercase font-bold text-slate-500 block">Skor Kamu</span>
+                            <span id="game1Score" class="text-lg font-black text-amber-500">0</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-100 border-2 border-amber-300 p-3 rounded-2xl text-center mb-3">
+                        <p class="text-xs text-amber-800 font-bold uppercase tracking-wider">Tugas Kamu:</p>
+                        <h3 id="game1Question" class="text-lg md:text-2xl font-extrabold text-amber-950 mt-0.5">
+                            "Mana TUTS pianika?"
+                        </h3>
+                        <button onclick="speakCurrentQuestion1()" class="mt-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3 py-1 rounded-lg text-xs inline-flex items-center gap-1 btn-bounce shadow">
+                            🔊 Dengarkan Pertanyaan
+                        </button>
+                    </div>
+
+                    <!-- OPTIONS GRID -->
+                    <div id="game1Options" class="grid grid-cols-2 md:grid-cols-3 gap-2.5 my-2">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- FEEDBACK -->
+                    <div id="game1Feedback" class="hidden p-3 rounded-2xl text-center font-bold text-base transition-all"></div>
+                </div>
+
+                <div class="pt-3 border-t flex justify-between gap-3">
+                    <button onclick="goToPage(4)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-5 rounded-2xl btn-bounce text-sm">
+                        ⬅️ KEMBALI
+                    </button>
+                    <button id="game1NextBtn" onclick="nextQuestion1()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-sm hidden">
+                        SOAL BERIKUTNYA ➡️
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 6: PERMAINAN MENCOCOKKAN -->
+            <section id="page-6" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Permainan 2 dari 2</span>
+                            <h2 class="font-heading text-xl md:text-2xl font-bold text-teal-700 mt-0.5">MENCARI PASANGAN</h2>
+                        </div>
+                        <button onclick="speakText('Sentuh nama di sebelah kiri, lalu sentuh gambar yang sesuai di sebelah kanan.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-3 py-1 rounded-xl text-xs flex items-center gap-1 btn-bounce shadow">
+                            🔊 Dengarkan
+                        </button>
+                    </div>
+
+                    <p class="text-xs md:text-sm font-semibold text-slate-600 mb-2 bg-slate-100 p-2 rounded-xl text-center">
+                        👈 1. Sentuh <strong>Nama Bagian</strong> (Kiri) &nbsp;|&nbsp; 👉 2. Sentuh <strong>Gambar</strong> (Kanan)!
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 my-2">
+                        <div class="space-y-2" id="matchNamesContainer">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div class="space-y-2" id="matchImagesContainer">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div id="matchFeedback" class="hidden p-3 rounded-2xl text-center font-bold text-sm my-1"></div>
+                </div>
+
+                <div class="pt-3 border-t flex justify-between gap-3">
+                    <button onclick="goToPage(5)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-5 rounded-2xl btn-bounce text-sm">
+                        ⬅️ KEMBALI
+                    </button>
+                    <button id="game2NextBtn" onclick="goToPage(7)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-sm">
+                        LANJUT KUIS ➡️
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 7: KUIS -->
+            <section id="page-7" class="page-section hidden flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-0.5 rounded-full">Evaluasi Belajar</span>
+                            <h2 class="font-heading text-xl md:text-2xl font-bold text-teal-700 mt-0.5">KUIS PIANIKA</h2>
+                        </div>
+                        <span id="quizProgress" class="text-xs md:text-sm font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-xl border border-teal-200">
+                            Soal 1 / 5
+                        </span>
+                    </div>
+
+                    <div class="bg-sky-50 border-2 border-sky-200 p-4 rounded-2xl mb-3">
+                        <p id="quizQuestionText" class="text-base md:text-xl font-bold text-slate-800 text-center">
+                            Bagian yang ditekan untuk menghasilkan nada adalah ...
+                        </p>
+                        <div class="text-center mt-2">
+                            <button onclick="speakQuizQuestion()" class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-1 rounded-lg text-xs inline-flex items-center gap-1 btn-bounce shadow">
+                                🔊 Dengarkan Soal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- QUIZ OPTIONS -->
+                    <div id="quizOptions" class="space-y-2.5">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t flex justify-between gap-3 mt-2">
+                    <button onclick="goToPage(6)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-5 rounded-2xl btn-bounce text-sm">
+                        ⬅️ KEMBALI
+                    </button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 8: HASIL BELAJAR -->
+            <section id="page-8" class="page-section hidden flex-col justify-between items-center text-center py-2 h-full">
+                <div class="w-full">
+                    <div class="inline-block bg-amber-100 text-amber-800 font-bold text-xs px-4 py-1 rounded-full mb-2">
+                        🎉 HASIL EVALUASI KAMU
+                    </div>
+                    <h2 class="font-heading text-2xl md:text-4xl font-extrabold text-teal-700 mb-0.5">
+                        SELESAI!
+                    </h2>
+                    <p id="resultStudentName" class="text-slate-600 font-semibold text-base mb-2">Siswa: -</p>
+
+                    <!-- SCORE CARD -->
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-4 border-amber-300 p-5 rounded-3xl max-w-sm mx-auto my-2 card-shadow">
+                        <span class="text-xs text-amber-800 font-bold uppercase tracking-wider block">NILAI KUIS</span>
+                        <div id="finalScoreText" class="text-6xl font-black text-amber-500 my-1">100</div>
+                        
+                        <div id="starsContainer" class="text-2xl md:text-3xl text-amber-400 my-1">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+
+                        <div id="resultMotivationText" class="text-base font-extrabold text-teal-800 mt-2 bg-white p-2.5 rounded-2xl border border-amber-200">
+                            Hebat sekali! Kamu luar biasa! 🌟
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-slate-600 bg-slate-100 p-2 rounded-xl max-w-xs mx-auto font-medium">
+                        Jawaban Benar: <span id="correctCount" class="font-bold text-emerald-600">5</span> | 
+                        Jawaban Salah: <span id="wrongCount" class="font-bold text-rose-600">0</span>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t w-full flex flex-col sm:flex-row gap-2.5 justify-center mt-2">
+                    <button onclick="restartQuiz()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-amber-700 btn-bounce text-sm flex items-center justify-center gap-2">
+                        🔄 ULANGI KUIS
+                    </button>
+                    <button onclick="goToPage(3)" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-sky-700 btn-bounce text-sm flex items-center justify-center gap-2">
+                        📖 BACA MATERI LAGI
+                    </button>
+                    <button onclick="goToPage(1)" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-2xl shadow border-b-4 border-teal-800 btn-bounce text-sm flex items-center justify-center gap-2">
+                        🏠 BERANDA
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-800 text-teal-100 text-center text-xs p-3">
+        <p>Ayo Mengenal Pianika &copy; 2026. Media Pembelajaran Interaktif SLB Fase B.</p>
+    </footer>
+
+    <!-- MODAL MATERI GURU -->
+    <div id="teacherModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-3xl p-5 md:p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto card-shadow border-4 border-amber-400">
+            <div class="flex justify-between items-center border-b pb-3 mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">👩‍🏫</span>
+                    <h3 class="font-heading text-xl font-bold text-amber-900">PANEL MATERI GURU</h3>
+                </div>
+                <button onclick="toggleTeacherModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold p-1">
+                    &times;
+                </button>
+            </div>
+
+            <div class="space-y-3.5 text-xs md:text-sm text-slate-700">
+                <!-- Identitas -->
+                <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200">
+                    <h4 class="font-bold text-amber-900 mb-1">📋 Identitas Media & Sekolah</h4>
+                    <p><strong>Sekolah:</strong> <span id="displaySekolah">SLB Negeri</span></p>
+                    <p><strong>Guru Pendamping:</strong> <span id="displayGuru">Guru Pendamping</span></p>
+                    <p><strong>Fase Target:</strong> Fase B (Pendidikan Khusus)</p>
+                </div>
+
+                <!-- Tujuan Pembelajaran -->
+                <div class="bg-teal-50 p-3 rounded-2xl border border-teal-200">
+                    <h4 class="font-bold text-teal-900 mb-1">🎯 Tujuan Pembelajaran:</h4>
+                    <ul class="list-disc list-inside space-y-0.5 text-xs">
+                        <li>Mengenal bentuk dan cara membunyikan pianika (ditiup dan ditekan).</li>
+                        <li>Menyebutkan dan menunjukkan 5 bagian utama pianika.</li>
+                        <li>Mencocokkan nama bagian pianika dengan gambarnya.</li>
+                        <li>Menjawab pertanyaan kuis evaluasi sederhana.</li>
+                    </ul>
+                </div>
+
+                <!-- Tautan Google Dokumen & Word File -->
+                <div class="bg-sky-50 p-3 rounded-2xl border border-sky-200">
+                    <h4 class="font-bold text-sky-900 mb-2">📚 Berkas & Tautan Dokumen Guru</h4>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button onclick="openGoogleDoc()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow btn-bounce">
+                            <i class="fa-regular fa-file-lines text-base"></i> 📄 BUKA GOOGLE DOKUMEN
+                        </button>
+                        <button onclick="openWordFile()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow btn-bounce">
+                            <i class="fa-solid fa-file-word text-base"></i> 📝 BUKA FILE WORD
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progres Tersimpan -->
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-1">📊 Progres Tersimpan Perangkat Ini:</h4>
+                    <p class="text-xs text-slate-600">Siswa Terakhir: <strong id="savedStudentName">-</strong></p>
+                    <p class="text-xs text-slate-600">Skor Kuis Terakhir: <strong id="savedStudentScore">-</strong></p>
+                    <button onclick="clearSavedData()" class="mt-2 text-xs text-rose-600 underline font-semibold hover:text-rose-800">
+                        Hapus Data Tersimpan
+                    </button>
+                </div>
+
+                <!-- Guidance Tips -->
+                <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200 text-xs">
+                    <h4 class="font-bold text-emerald-900 mb-1">💡 Saran Pendampingan SLB:</h4>
+                    <p>Dampingi siswa dengan menghadirkan instrumen fisik pianika riil di meja. Ajak siswa memegang selang dan menekan tuts nyata secara bersamaan saat berinteraksi dengan aplikasi ini.</p>
+                </div>
+            </div>
+
+            <div class="mt-4 border-t pt-3 text-right">
+                <button onclick="toggleTeacherModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2 rounded-xl text-xs md:text-sm btn-bounce">
+                    TUTUP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // PENGATURAN MEDIA PEMBELAJARAN (EDITABLE GURU)
+        // ========================================
+        const NAMA_SEKOLAH = "SLB Tunas Bangsa";
+        const NAMA_GURU = "Ibu Guru Pendamping";
+        const JUDUL_MEDIA = "Ayo Mengenal Pianika";
+
+        // Tautan Guru
+        const GOOGLE_DOC_URL = "MASUKKAN_LINK_GOOGLE_DOCS_DI_SINI";
+        const WORD_FILE_URL = "MASUKKAN_LINK_FILE_WORD_DI_SINI";
+
+        // ========================================
+        // DATA MATERI BAGIAN PIANIKA
+        // ========================================
+        const PART_DETAILS = {
+            tuts: {
+                title: "TUTS PIANIKA",
+                icon: "🎹",
+                svgId: "svg-tuts",
+                desc: "Tuts ditekan untuk menghasilkan nada.",
+                speech: "Tuts. Tuts ditekan untuk menghasilkan nada."
+            },
+            selang: {
+                title: "SELANG TIUP",
+                icon: "🪈",
+                svgId: "svg-selang",
+                desc: "Selang digunakan untuk meniup pianika.",
+                speech: "Selang tiup. Selang digunakan untuk meniup pianika."
+            },
+            mouthpiece: {
+                title: "MOUTHPIECE (CORONG)",
+                icon: "👄",
+                svgId: "svg-mouthpiece",
+                desc: "Mouthpiece adalah bagian untuk meniup pianika.",
+                speech: "Mouthpiece. Mouthpiece adalah bagian untuk meniup pianika."
+            },
+            badan: {
+                title: "BADAN PIANIKA",
+                icon: "📦",
+                svgId: "svg-badan",
+                desc: "Badan pianika adalah bagian utama tempat tuts berada.",
+                speech: "Badan pianika. Badan pianika adalah bagian utama tempat tuts berada."
+            },
+            udara: {
+                title: "SALURAN UDARA",
+                icon: "💨",
+                svgId: "svg-udara",
+                desc: "Bagian ini membantu udara masuk dan keluar dari pianika.",
+                speech: "Saluran udara. Bagian ini membantu udara masuk dan keluar dari pianika."
+            }
+        };
+
+        // DATA GAME 1: AYO TEMUKAN (5 PERTANYAAN)
+        const GAME1_QUESTIONS = [
+            {
+                question: "Mana TUTS pianika?",
+                correct: "tuts",
+                options: [
+                    { id: "tuts", label: "TUTS", icon: "🎹" },
+                    { id: "selang", label: "SELANG", icon: "🪈" },
+                    { id: "badan", label: "BADAN", icon: "📦" }
+                ]
+            },
+            {
+                question: "Mana SELANG TIUP?",
+                correct: "selang",
+                options: [
+                    { id: "mouthpiece", label: "MOUTHPIECE", icon: "👄" },
+                    { id: "selang", label: "SELANG TIUP", icon: "🪈" },
+                    { id: "udara", label: "SALURAN UDARA", icon: "💨" }
+                ]
+            },
+            {
+                question: "Mana MOUTHPIECE (Corong Tiup)?",
+                correct: "mouthpiece",
+                options: [
+                    { id: "tuts", label: "TUTS", icon: "🎹" },
+                    { id: "badan", label: "BADAN", icon: "📦" },
+                    { id: "mouthpiece", label: "MOUTHPIECE", icon: "👄" }
+                ]
+            },
+            {
+                question: "Mana BADAN PIANIKA?",
+                correct: "badan",
+                options: [
+                    { id: "badan", label: "BADAN PIANIKA", icon: "📦" },
+                    { id: "selang", label: "SELANG TIUP", icon: "🪈" },
+                    { id: "tuts", label: "TUTS", icon: "🎹" }
+                ]
+            },
+            {
+                question: "Mana SALURAN / LUBANG UDARA?",
+                correct: "udara",
+                options: [
+                    { id: "mouthpiece", label: "MOUTHPIECE", icon: "👄" },
+                    { id: "udara", label: "SALURAN UDARA", icon: "💨" },
+                    { id: "badan", label: "BADAN", icon: "📦" }
+                ]
+            }
+        ];
+
+        // DATA GAME 2: MENCCOCKAN (MATCHING)
+        const MATCH_ITEMS = [
+            { id: "tuts", name: "TUTS", icon: "🎹" },
+            { id: "selang", name: "SELANG TIUP", icon: "🪈" },
+            { id: "mouthpiece", name: "MOUTHPIECE", icon: "👄" },
+            { id: "badan", name: "BADAN PIANIKA", icon: "📦" },
+            { id: "udara", name: "SALURAN UDARA", icon: "💨" }
+        ];
+
+        // DATA KUIS (5 SOAL EVALUASI)
+        const QUIZ_QUESTIONS = [
+            {
+                q: "1. Bagian pianika yang ditekan untuk menghasilkan nada adalah ...",
+                options: [
+                    { text: "A. Selang Tiup", isCorrect: false },
+                    { text: "B. Tuts Pianika", isCorrect: true },
+                    { text: "C. Saluran Udara", isCorrect: false }
+                ]
+            },
+            {
+                q: "2. Alat yang digunakan untuk meniup piana dari mulut ke pianika dinamakan ...",
+                options: [
+                    { text: "A. Selang Tiup", isCorrect: true },
+                    { text: "B. Tuts Pianika", isCorrect: false },
+                    { text: "C. Badan Pianika", isCorrect: false }
+                ]
+            },
+            {
+                q: "3. Mouthpiece adalah bagian pianika yang digunakan untuk ...",
+                options: [
+                    { text: "A. Menekan Nada", isCorrect: false },
+                    { text: "B. Memegang Pianika", isCorrect: false },
+                    { text: "C. Meniup Pianika", isCorrect: true }
+                ]
+            },
+            {
+                q: "4. Badan pianika adalah bagian utama tempat ... berada.",
+                options: [
+                    { text: "A. Tuts", isCorrect: true },
+                    { text: "B. Sepatu", isCorrect: false },
+                    { text: "C. Topi", isCorrect: false }
+                ]
+            },
+            {
+                q: "5. Bagian yang membantu udara masuk dan keluar dari pianika dinamakan ...",
+                options: [
+                    { text: "A. Tuts", isCorrect: false },
+                    { text: "B. Saluran Udara", isCorrect: true },
+                    { text: "C. Mouthpiece", isCorrect: false }
+                ]
+            }
+        ];
+
+        let currentState = {
+            studentName: "Peserta Didik",
+            currentPage: 1,
+            game1Index: 0,
+            game1Score: 0,
+            selectedMatchName: null,
+            matchedPairs: [],
+            quizIndex: 0,
+            quizScore: 0,
+            quizCorrectCount: 0,
+            quizWrongCount: 0
+        };
+
+        // Web Audio Synthesizer
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.5);
+                } else if (type === 'wrong') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+                    osc.frequency.setValueAtTime(180, audioCtx.currentTime + 0.15);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                }
+            } catch(e) {}
+        }
+
+        // Web Speech API (Text-To-Speech Bahasa Indonesia)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.85; // Tempo sedikit pelan ramah SLB
+                utterance.pitch = 1.1;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function goToPage(pageNum) {
+            playSound('click');
+            window.speechSynthesis.cancel();
+            
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.add('hidden');
+                sec.classList.remove('flex');
+            });
+
+            const targetPage = document.getElementById(`page-${pageNum}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('flex');
+                currentState.currentPage = pageNum;
+                window.scrollTo(0, 0);
+
+                if (pageNum === 5) initGame1();
+                if (pageNum === 6) initGame2();
+                if (pageNum === 7) initQuiz();
+            }
+        }
+
+        function startApp() {
+            const input = document.getElementById('studentNameInput');
+            if (input && input.value.trim() !== '') {
+                currentState.studentName = input.value.trim();
+            } else {
+                currentState.studentName = "Anak Hebat";
+            }
+            saveLocalData();
+            goToPage(3);
+        }
+
+        function showPartDetail(partKey) {
+            playSound('click');
+            const data = PART_DETAILS[partKey];
+            if (!data) return;
+
+            // Highlight reset
+            Object.keys(PART_DETAILS).forEach(k => {
+                const el = document.getElementById(PART_DETAILS[k].svgId);
+                if (el) el.classList.remove('part-highlight');
+            });
+
+            // Apply highlight
+            const targetSvg = document.getElementById(data.svgId);
+            if (targetSvg) targetSvg.classList.add('part-highlight');
+
+            const card = document.getElementById('partCard');
+            card.className = "bg-amber-100 border-3 border-amber-400 p-4 rounded-2xl text-center shadow-md transition-all";
+            card.innerHTML = `
+                <div class="flex items-center justify-center gap-2 mb-1">
+                    <span class="text-3xl">${data.icon}</span>
+                    <h3 class="font-heading text-xl font-bold text-amber-950">${data.title}</h3>
+                </div>
+                <p class="text-base font-bold text-slate-800 my-1">${data.desc}</p>
+                <button onclick="speakText('${data.speech}')" class="mt-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-4 py-1 rounded-xl text-xs inline-flex items-center gap-1 btn-bounce shadow">
+                    🔊 Dengarkan Suara
+                </button>
+            `;
+
+            speakText(data.speech);
+        }
+
+        // GAME 1 LOGIC
+        function initGame1() {
+            currentState.game1Index = 0;
+            currentState.game1Score = 0;
+            document.getElementById('game1Score').innerText = currentState.game1Score;
+            renderQuestion1();
+        }
+
+        function renderQuestion1() {
+            const current = GAME1_QUESTIONS[currentState.game1Index];
+            document.getElementById('game1Question').innerText = `"${current.question}"`;
+            document.getElementById('game1Feedback').className = "hidden";
+            document.getElementById('game1NextBtn').classList.add('hidden');
+
+            const optionsContainer = document.getElementById('game1Options');
+            optionsContainer.innerHTML = '';
+
+            current.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "bg-teal-50 hover:bg-teal-100 border-3 border-teal-200 p-4 rounded-2xl text-center flex flex-col items-center justify-center gap-2 btn-bounce font-bold text-slate-800 text-sm md:text-base shadow";
+                btn.innerHTML = `
+                    <span class="text-4xl">${opt.icon}</span>
+                    <span>${opt.label}</span>
+                `;
+                btn.onclick = () => checkGame1Answer(opt.id, current.correct);
+                optionsContainer.appendChild(btn);
+            });
+
+            speakCurrentQuestion1();
+        }
+
+        function speakCurrentQuestion1() {
+            const current = GAME1_QUESTIONS[currentState.game1Index];
+            speakText(current.question);
+        }
+
+        function checkGame1Answer(selectedId, correctId) {
+            const feedback = document.getElementById('game1Feedback');
+            feedback.classList.remove('hidden');
+
+            if (selectedId === correctId) {
+                playSound('correct');
+                currentState.game1Score += 20;
+                document.getElementById('game1Score').innerText = currentState.game1Score;
+                feedback.className = "p-3 rounded-2xl text-center font-bold text-base bg-emerald-100 text-emerald-900 border-2 border-emerald-300 my-2";
+                feedback.innerHTML = "✅ Hebat! Kamu benar.";
+                speakText("Hebat! Kamu benar.");
+
+                document.getElementById('game1NextBtn').classList.remove('hidden');
+            } else {
+                playSound('wrong');
+                feedback.className = "p-3 rounded-2xl text-center font-bold text-base bg-amber-100 text-amber-900 border-2 border-amber-300 my-2";
+                feedback.innerHTML = "❌ Coba lagi.";
+                speakText("Coba lagi.");
+            }
+        }
+
+        function nextQuestion1() {
+            currentState.game1Index++;
+            if (currentState.game1Index < GAME1_QUESTIONS.length) {
+                renderQuestion1();
+            } else {
+                goToPage(6);
+            }
+        }
+
+        function initGame2() {
+            currentState.selectedMatchName = null;
+            currentState.matchedPairs = [];
+            document.getElementById('matchFeedback').className = "hidden";
+
+            const namesContainer = document.getElementById('matchNamesContainer');
+            const imagesContainer = document.getElementById('matchImagesContainer');
+            namesContainer.innerHTML = '';
+            imagesContainer.innerHTML = '';
+
+            const shuffledImages = [...MATCH_ITEMS].sort(() => Math.random() - 0.5);
+
+            MATCH_ITEMS.forEach(item => {
+                const nameBtn = document.createElement('button');
+                nameBtn.id = `match-name-${item.id}`;
+                nameBtn.className = "w-full bg-sky-50 border-2 border-sky-300 hover:bg-sky-100 p-2.5 rounded-2xl font-bold text-sky-900 text-xs md:text-sm text-left btn-bounce flex items-center justify-between";
+                nameBtn.innerHTML = `<span>${item.name}</span> <i class="fa-solid fa-hand-pointer text-sky-400 text-xs"></i>`;
+                nameBtn.onclick = () => selectMatchName(item.id);
+                namesContainer.appendChild(nameBtn);
+            });
+
+            shuffledImages.forEach(item => {
+                const imgBtn = document.createElement('button');
+                imgBtn.id = `match-img-${item.id}`;
+                imgBtn.className = "w-full bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 p-2.5 rounded-2xl font-bold text-amber-900 text-base text-center btn-bounce flex items-center justify-center gap-1";
+                imgBtn.innerHTML = `<span class="text-2xl">${item.icon}</span>`;
+                imgBtn.onclick = () => selectMatchImage(item.id);
+                imagesContainer.appendChild(imgBtn);
+            });
+        }
+
+        function selectMatchName(id) {
+            if (currentState.matchedPairs.includes(id)) return;
+            playSound('click');
+            currentState.selectedMatchName = id;
+
+            MATCH_ITEMS.forEach(item => {
+                const el = document.getElementById(`match-name-${item.id}`);
+                if (el && !currentState.matchedPairs.includes(item.id)) {
+                    el.className = item.id === id ? 
+                        "w-full bg-amber-300 border-2 border-amber-500 p-2.5 rounded-2xl font-bold text-slate-900 text-xs md:text-sm text-left btn-bounce shadow" :
+                        "w-full bg-sky-50 border-2 border-sky-300 p-2.5 rounded-2xl font-bold text-sky-900 text-xs md:text-sm text-left btn-bounce";
+                }
+            });
+
+            const nameData = MATCH_ITEMS.find(m => m.id === id);
+            if (nameData) speakText(`Pilih gambar untuk ${nameData.name}`);
+        }
+
+        function selectMatchImage(id) {
+            if (!currentState.selectedMatchName) {
+                speakText("Sentuh nama di sebelah kiri dulu.");
+                return;
+            }
+            if (currentState.matchedPairs.includes(id)) return;
+
+            const feedback = document.getElementById('matchFeedback');
+            feedback.classList.remove('hidden');
+
+            if (currentState.selectedMatchName === id) {
+                playSound('correct');
+                currentState.matchedPairs.push(id);
+
+                const nameEl = document.getElementById(`match-name-${id}`);
+                const imgEl = document.getElementById(`match-img-${id}`);
+                
+                nameEl.className = "w-full bg-emerald-100 border-2 border-emerald-400 p-2.5 rounded-2xl font-bold text-emerald-800 text-xs opacity-60 cursor-not-allowed";
+                nameEl.innerHTML = `<span>✅ ${nameEl.innerText}</span>`;
+                
+                imgEl.className = "w-full bg-emerald-100 border-2 border-emerald-400 p-2.5 rounded-2xl font-bold text-emerald-800 text-base opacity-60 cursor-not-allowed";
+                imgEl.innerHTML = `<span>✅ Cocok</span>`;
+
+                feedback.className = "p-2.5 rounded-2xl text-center font-bold text-xs md:text-sm bg-emerald-100 text-emerald-900 border border-emerald-300 my-1";
+                feedback.innerText = "✅ Cocok! Kamu hebat!";
+                speakText("Cocok! Kamu hebat!");
+
+                currentState.selectedMatchName = null;
+
+                if (currentState.matchedPairs.length === MATCH_ITEMS.length) {
+                    setTimeout(() => {
+                        speakText("Luar biasa! Semua pasangan berhasil dicocokkan. Ayo lanjut ke kuis!");
+                    }, 800);
+                }
+            } else {
+                playSound('wrong');
+                feedback.className = "p-2.5 rounded-2xl text-center font-bold text-xs md:text-sm bg-amber-100 text-amber-900 border border-amber-300 my-1";
+                feedback.innerText = "❌ Kurang pas. Coba lagi.";
+                speakText("Kurang pas. Coba lagi.");
+            }
+        }
+
+        function initQuiz() {
+            currentState.quizIndex = 0;
+            currentState.quizScore = 0;
+            currentState.quizCorrectCount = 0;
+            currentState.quizWrongCount = 0;
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const current = QUIZ_QUESTIONS[currentState.quizIndex];
+            document.getElementById('quizProgress').innerText = `Soal ${currentState.quizIndex + 1} / ${QUIZ_QUESTIONS.length}`;
+            document.getElementById('quizQuestionText').innerText = current.q;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            current.options.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-white border-3 border-teal-200 hover:border-teal-400 hover:bg-teal-50 p-3.5 rounded-2xl font-bold text-slate-800 text-sm md:text-base btn-bounce shadow flex items-center justify-between";
+                btn.innerHTML = `<span>${opt.text}</span> <i class="fa-solid fa-circle-check text-teal-400 text-lg"></i>`;
+                btn.onclick = () => answerQuiz(opt.isCorrect);
+                optionsContainer.appendChild(btn);
+            });
+
+            speakQuizQuestion();
+        }
+
+        function speakQuizQuestion() {
+            const current = QUIZ_QUESTIONS[currentState.quizIndex];
+            speakText(current.q);
+        }
+
+        function answerQuiz(isCorrect) {
+            if (isCorrect) {
+                playSound('correct');
+                currentState.quizScore += 20;
+                currentState.quizCorrectCount++;
+            } else {
+                playSound('wrong');
+                currentState.quizWrongCount++;
+            }
+
+            currentState.quizIndex++;
+
+            if (currentState.quizIndex < QUIZ_QUESTIONS.length) {
+                renderQuizQuestion();
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            saveLocalData();
+            goToPage(8);
+
+            document.getElementById('resultStudentName').innerText = `Nama Peserta Didik: ${currentState.studentName}`;
+            document.getElementById('finalScoreText').innerText = currentState.quizScore;
+            document.getElementById('correctCount').innerText = currentState.quizCorrectCount;
+            document.getElementById('wrongCount').innerText = currentState.quizWrongCount;
+
+            const score = currentState.quizScore;
+            const motivationEl = document.getElementById('resultMotivationText');
+            const starsEl = document.getElementById('starsContainer');
+
+            if (score >= 90) {
+                starsEl.innerText = "⭐⭐⭐⭐⭐";
+                motivationEl.innerText = "Hebat sekali!";
+                speakText("Hebat sekali! Nilai kamu sempurna!");
+                if (typeof confetti === 'function') confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            } else if (score >= 70) {
+                starsEl.innerText = "⭐⭐⭐⭐";
+                motivationEl.innerText = "Bagus! Terus belajar.";
+                speakText("Bagus! Terus belajar.");
+            } else if (score >= 50) {
+                starsEl.innerText = "⭐⭐⭐";
+                motivationEl.innerText = "Kamu sudah mencoba.";
+                speakText("Kamu sudah mencoba.");
+            } else {
+                starsEl.innerText = "⭐⭐";
+                motivationEl.innerText = "Ayo belajar lagi bersama guru.";
+                speakText("Ayo belajar lagi bersama guru.");
+            }
+        }
+
+        function restartQuiz() {
+            initQuiz();
+            goToPage(7);
+        }
+
+        function saveLocalData() {
+            try {
+                localStorage.setItem('pianika_student_name', currentState.studentName);
+                localStorage.setItem('pianika_student_score', currentState.quizScore);
+            } catch(e) {}
+        }
+
+        function loadLocalData() {
+            try {
+                const name = localStorage.getItem('pianika_student_name');
+                const score = localStorage.getItem('pianika_student_score');
+
+                if (name) {
+                    currentState.studentName = name;
+                    document.getElementById('studentNameInput').value = name;
+                    document.getElementById('savedStudentName').innerText = name;
+                }
+                if (score !== null) {
+                    document.getElementById('savedStudentScore').innerText = `${score} Poin`;
+                }
+            } catch(e) {}
+        }
+
+        function clearSavedData() {
+            try {
+                localStorage.removeItem('pianika_student_name');
+                localStorage.removeItem('pianika_student_score');
+                document.getElementById('savedStudentName').innerText = "-";
+                document.getElementById('savedStudentScore').innerText = "-";
+                document.getElementById('studentNameInput').value = "";
+                alert("Data tersimpan berhasil dihapus.");
+            } catch(e){}
+        }
+
+        function toggleTeacherModal() {
+            playSound('click');
+            const modal = document.getElementById('teacherModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                document.getElementById('displaySekolah').innerText = NAMA_SEKOLAH;
+                document.getElementById('displayGuru').innerText = NAMA_GURU;
+                loadLocalData();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function openGoogleDoc() {
+            if (GOOGLE_DOC_URL && GOOGLE_DOC_URL.trim() !== "" && !GOOGLE_DOC_URL.includes("MASUKKAN_LINK")) {
+                window.open(GOOGLE_DOC_URL, '_blank');
+            } else {
+                alert("Link Google Dokumen belum tersedia.");
+            }
+        }
+
+        function openWordFile() {
+            if (WORD_FILE_URL && WORD_FILE_URL.trim() !== "" && !WORD_FILE_URL.includes("MASUKKAN_LINK")) {
+                window.open(WORD_FILE_URL, '_blank');
+            } else {
+                alert("Link file Word belum tersedia.");
+            }
+        }
+
+        // On Load Init
+        window.onload = function() {
+            loadLocalData();
+        };
+    </script>
+</body>
+</html>
